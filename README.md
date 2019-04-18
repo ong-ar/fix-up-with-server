@@ -7,8 +7,10 @@
 - graphql server 접근은 어디에서나 가능
 - graphql server 접근 제어는 JWT 토큰 이용
 
-[x] prisma  
-[ ] graphql
+### todo
+
+- [x] prisma  
+- [ ] graphql server
 
 ## data model
 

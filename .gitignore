@@ -1,8 +1,5 @@
 # prisma 생성 파일
 prisma
 
-# vscode 설정 파일
-.vscode
-
 # 패키지
 node_modules

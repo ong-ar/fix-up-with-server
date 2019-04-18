@@ -1,0 +1,8 @@
+{
+  "name": "fix-up-with-server",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "https://github.com/ong-ar/fix-up-with-server.git",
+  "author": "ong-ar <reclusis@gmail.com>",
+  "license": "MIT"
+}

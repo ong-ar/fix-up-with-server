@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/sis-b30d5e/fix-up-with-server/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/

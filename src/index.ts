@@ -1,18 +1,19 @@
+import dotenv from "dotenv";
 import { GraphQLServer } from "graphql-yoga";
-// ... or using `require()`
-// const { GraphQLServer } = require('graphql-yoga')
+import logger from "morgan";
+import { authenticateJwt } from "./passport";
+import schema from "./schema";
+import "./passport";
 
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`;
+dotenv.config();
 
-const resolvers = {
-  Query: {
-    hello: (_, { name }) => `Hello ${name || "World"}`,
-  },
-};
+const server = new GraphQLServer({
+  context: ({ request }: any) => ({ request }),
+  schema,
+});
 
-const server = new GraphQLServer({ typeDefs, resolvers });
-server.start(() => console.log("Server is running on localhost:4000"));
+server.express.use(authenticateJwt);
+
+server.express.use(logger("combined"));
+
+server.start(() => console.log("Server is running on http://localhost:4000"));

@@ -1,3 +1,7 @@
+## 환경 변수
+
+1. JWT_SECRET
+
 ## 서버 구조
 
     database - prisma - graphql server - client
@@ -9,8 +13,9 @@
 
 ### todo
 
-- [x] prisma  
-- [ ] graphql server
+- [x] prisma
+- [x] graphql server
+- [x] graphql query test
 
 ## data model
 

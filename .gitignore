@@ -3,3 +3,6 @@ prisma
 
 # 패키지
 node_modules
+
+# 환경 변수
+.env

@@ -7,5 +7,6 @@
     "lib": ["esnext", "dom"],
     "noImplicitAny": false
   },
+  "files": ["custom.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

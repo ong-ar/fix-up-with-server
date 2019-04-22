@@ -1,13 +1,46 @@
 type User {
   id: ID! @id
-  email: String @unique
-  name: String!
-  posts: [Post!]!
+  email: String! @unique
+  password: String!
+  following: [User!]! @relation(name: "FollowRelation")
+  followers: [User!]! @relation(name: "FollowRelation")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
-type Post {
+enum InvitationStatus {
+  REQUEST
+  COMPLETE
+}
+
+type Invitation {
   id: ID! @id
-  title: String!
-  published: Boolean! @default(value: false)
-  author: User @relation(link: INLINE)
+  invitedEmail: String!
+  invitingUser: User!
+  status: InvitationStatus! @default(value: REQUEST)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+enum SomeOneGender {
+  MALE
+  FEMALE
+}
+
+type SomeOne {
+  id: ID! @id
+  matchMaker: User!
+  gender: SomeOneGender!
+  age: Int!
+  photo: [SomeOnePhoto!]! @relation(name: "PhotoRelation")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type SomeOnePhoto {
+  id: ID! @id
+  SomeOne: SomeOne! @relation(name: "PhotoRelation")
+  photo: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

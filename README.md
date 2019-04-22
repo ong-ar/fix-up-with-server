@@ -19,4 +19,10 @@
 
 ## data model
 
+- [x] 주선자
+- [x] 초대
+- [x] 소개팅할 사람
+
 ## graphql resolver
+
+- [ ] 로그인

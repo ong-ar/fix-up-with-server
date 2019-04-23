@@ -27,12 +27,22 @@ enum SomeOneGender {
   FEMALE
 }
 
+enum SomeOneCompany {
+  LARGE
+  MEDIUM
+  FOREIGN
+}
+
 type SomeOne {
   id: ID! @id
   matchMaker: User!
   gender: SomeOneGender!
   age: Int!
+  height: Int!
+  company: SomeOneCompany!
+  etc: String
   photo: [SomeOnePhoto!]! @relation(name: "PhotoRelation")
+  reply: [Reply!]! @relation(name: "ReplyRelation")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -41,6 +51,15 @@ type SomeOnePhoto {
   id: ID! @id
   SomeOne: SomeOne! @relation(name: "PhotoRelation")
   photo: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Reply {
+  id: ID! @id
+  someone: SomeOne! @relation(name: "ReplyRelation")
+  writer: User!
+  content: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

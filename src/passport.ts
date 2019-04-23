@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
-import { NextFunction, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { prisma } from "../prisma/prisma-client";
 import dotenv from "dotenv";
@@ -17,7 +17,11 @@ const strategy = new Strategy(options, async (payload, done) => {
   return done(null, user);
 });
 
-export const authenticateJwt = (req: any, res: Response, next: NextFunction) =>
+interface IRequest extends Request {
+  user?: string;
+}
+
+export const authenticateJwt = (req: IRequest, res: Response, next: NextFunction) =>
   passport.authenticate("jwt", { session: false }, (err, user, info) => {
     if (user) {
       req.user = user;

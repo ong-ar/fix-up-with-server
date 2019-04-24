@@ -1,4 +1,4 @@
-export const typeDefs = ["type User {\n  id: String!\n  name: String!\n  email: String\n}\n\ntype Query {\n  myProfile: User!\n}\n"];
+export const typeDefs = ["type User {\n  id: String!\n  email: String!\n}\n\ntype Mutation {\n  createProfile(id: String!, password: String!): Boolean!\n}\n\ntype Query {\n  myProfile: User!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -7,6 +7,14 @@ export interface Query {
 
 export interface User {
   id: string;
-  name: string;
-  email: string | null;
+  email: string;
+}
+
+export interface Mutation {
+  createProfile: boolean;
+}
+
+export interface CreateProfileMutationArgs {
+  id: string;
+  password: string;
 }

@@ -1,7 +1,10 @@
 type User {
   id: String!
-  name: String!
-  email: String
+  email: String!
+}
+
+type Mutation {
+  createProfile(id: String!, password: String!): Boolean!
 }
 
 type Query {

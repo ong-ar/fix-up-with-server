@@ -21,7 +21,11 @@ interface IRequest extends Request {
   user?: string;
 }
 
-export const authenticateJwt = (req: IRequest, res: Response, next: NextFunction) =>
+export const authenticateJwt = (
+  req: IRequest,
+  res: Response,
+  next: NextFunction,
+) =>
   passport.authenticate("jwt", { session: false }, (err, user, info) => {
     if (user) {
       req.user = user;

@@ -4,7 +4,7 @@ type User {
   password: String!
   following: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
-  invitation: [Invitation]! @relation(name: "InvitatingRelation")
+  invitation: [Invitation!]! @relation(name: "InvitatingRelation")
   reply: [Reply!]! @relation(name: "UserReplyRelation")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

@@ -3,11 +3,12 @@ type User {
   email: String!
 }
 
-type Query {
-  myProfile: User!
-}
-
 type Mutation {
+  invite(email: String!): Boolean!
   signIn(email: String!, password: String!): String!
   signUp(id: String!, password: String!): Boolean!
+}
+
+type Query {
+  myProfile: User!
 }

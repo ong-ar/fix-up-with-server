@@ -1,0 +1,3 @@
+type Mutation {
+  invite(email: String!): Boolean!
+}

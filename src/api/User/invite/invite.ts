@@ -1,7 +1,10 @@
 import { prisma } from "../../../../prisma/prisma-client";
-import { InviteMutationArgs } from "../../../types/graph";
+import {
+  InviteMutationArgs,
+  InviteQueryArgs,
+  Invitation,
+} from "../../../types/graph";
 import { isAuthenticated } from "../../../middlewares";
-import { connect } from "http2";
 
 export default {
   Mutation: {
@@ -25,6 +28,13 @@ export default {
       } catch {
         return false;
       }
+    },
+  },
+  Query: {
+    invite: async (_: any, args: InviteQueryArgs): Promise<Invitation> => {
+      const { id } = args;
+      const invitation = await prisma.invitation({ id });
+      return invitation;
     },
   },
 };

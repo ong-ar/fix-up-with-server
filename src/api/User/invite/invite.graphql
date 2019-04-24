@@ -1,3 +1,7 @@
 type Mutation {
   invite(email: String!): Boolean!
 }
+
+type Query {
+  invite(id: String!): Invitation!
+}

@@ -1,3 +1,0 @@
-type Mutation {
-  createProfile(id: String!, password: String!): Boolean!
-}

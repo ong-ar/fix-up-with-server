@@ -3,10 +3,11 @@ type User {
   email: String!
 }
 
-type Mutation {
-  createProfile(id: String!, password: String!): Boolean!
-}
-
 type Query {
   myProfile: User!
+}
+
+type Mutation {
+  signIn(email: String!, password: String!): String!
+  signUp(id: String!, password: String!): Boolean!
 }

@@ -1,16 +1,12 @@
-import { prisma, User } from "../../../../prisma/prisma-client";
-import { CreateProfileMutationArgs } from "../../../types/graph";
+import { prisma } from "../../../../prisma/prisma-client";
+import { SignUpMutationArgs } from "../../../types/graph";
 import { crypt } from "../../../crypt";
 
 export default {
   Mutation: {
-    createProfile: async (
-      _,
-      args: CreateProfileMutationArgs,
-    ): Promise<boolean> => {
+    signUp: async (_: any, args: SignUpMutationArgs): Promise<boolean> => {
       try {
         const { id, password } = args;
-
         const invitation = await prisma.invitation({ id });
         if (invitation && invitation.status === "REQUEST") {
           await prisma.updateInvitation({

@@ -31,7 +31,7 @@
 - [x] 로그인 (signin)
 - [x] 회원 초대 (invite)
 - [x] 주선자 정보 (User/info)
-- [x] 인재풀 등록 (createSomeone)
+- [ ] 인재풀 등록 (createSomeone)
 - [ ] 인재풀 수정 / 삭제 (updateSomeone)
 - [ ] 인재풀 리스트 (SomeoneList)
 - [ ] 인재풀 정보 (Someone/info)

@@ -30,7 +30,6 @@ type SomeOne {
 
 type SomeOnePhoto {
   id: String!
-  SomeOne: SomeOne!
   photo: String!
 }
 

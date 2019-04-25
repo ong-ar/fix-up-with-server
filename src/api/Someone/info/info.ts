@@ -1,9 +1,36 @@
-import { prisma, SomeOne, User } from "../../../../prisma/prisma-client";
-import { SomeOneProfileQueryArgs } from "../../../types/graph";
+import {
+  prisma,
+  SomeOne,
+  User,
+  SomeOnePhoto,
+} from "../../../../prisma/prisma-client";
+import {
+  SomeOneProfileQueryArgs,
+  SomeOnePhotoQueryArgs,
+} from "../../../types/graph";
 import { isAuthenticated } from "../../../middlewares";
 
 export default {
   Query: {
+    SomeOnePhoto: async (
+      _,
+      args: SomeOnePhotoQueryArgs,
+      { request },
+    ): Promise<SomeOnePhoto[] | null> => {
+      isAuthenticated(request);
+      const {
+        user: { id: user },
+      } = request;
+
+      const { id } = args;
+
+      if (isAccess(id, user)) {
+        const someOnePhoto = await prisma.someOne({ id }).photo();
+        return someOnePhoto;
+      } else {
+        return null;
+      }
+    },
     SomeOneProfile: async (
       _,
       args: SomeOneProfileQueryArgs,

@@ -1,46 +1,19 @@
-export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  matchMaker: User!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n  photo: [SomeOnePhoto!]!\n  reply: [Reply!]!\n}\n\ntype SomeOnePhoto {\n  id: String!\n  SomeOne: SomeOne!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  someone: SomeOne!\n  writer: User!\n  content: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\ntype Query {\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n"];
+export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  matchMaker: User!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n}\n\ntype SomeOnePhoto {\n  id: String!\n  SomeOne: SomeOne!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  someone: SomeOne!\n  writer: User!\n  content: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\ntype Query {\n  SomeOneProfile: SomeOne!\n  SomeOnePhoto: [SomeOnePhoto!]!\n  SomeOneReply: [Reply!]!\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  myChats: [Chat!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  SomeOneProfile: SomeOne;
+  SomeOnePhoto: Array<SomeOnePhoto>;
+  SomeOneReply: Array<Reply>;
   myProfile: User;
   myFollowing: Array<User>;
   myFollowers: Array<User>;
+  myChats: Array<Chat>;
   invite: Invitation;
 }
 
 export interface InviteQueryArgs {
   id: string;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  password: string;
-}
-
-export interface Invitation {
-  id: string;
-  invitedEmail: string;
-}
-
-export interface Mutation {
-  invite: boolean;
-  signIn: string;
-  signUp: boolean;
-}
-
-export interface InviteMutationArgs {
-  email: string;
-}
-
-export interface SignInMutationArgs {
-  email: string;
-  password: string;
-}
-
-export interface SignUpMutationArgs {
-  id: string;
-  password: string;
 }
 
 export interface SomeOne {
@@ -51,8 +24,12 @@ export interface SomeOne {
   height: number;
   company: string;
   etc: string | null;
-  photo: Array<SomeOnePhoto>;
-  reply: Array<Reply>;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  password: string;
 }
 
 export interface SomeOnePhoto {
@@ -79,4 +56,29 @@ export interface Message {
   text: string;
   user: User;
   chat: Chat;
+}
+
+export interface Invitation {
+  id: string;
+  invitedEmail: string;
+}
+
+export interface Mutation {
+  invite: boolean;
+  signIn: string;
+  signUp: boolean;
+}
+
+export interface InviteMutationArgs {
+  email: string;
+}
+
+export interface SignInMutationArgs {
+  email: string;
+  password: string;
+}
+
+export interface SignUpMutationArgs {
+  id: string;
+  password: string;
 }

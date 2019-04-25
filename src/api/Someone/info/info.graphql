@@ -1,0 +1,5 @@
+type Query {
+  SomeOneProfile: SomeOne!
+  SomeOnePhoto: [SomeOnePhoto!]!
+  SomeOneReply: [Reply!]!
+}

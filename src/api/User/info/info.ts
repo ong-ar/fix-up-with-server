@@ -3,6 +3,36 @@ import { isAuthenticated } from "../../../middlewares";
 
 export default {
   Query: {
+    myChats: async (_, __, { request }): Promise<Chat[]> => {
+      isAuthenticated(request);
+      const {
+        user: { id },
+      } = request;
+      const fragment = `fragment chatsWithUsers on Chat {
+        id
+        users {
+          id
+          email
+          password
+        }
+        messages(last:1) {
+          id
+          text
+          user {
+            id
+            email
+            password
+          }
+        }
+      }`;
+
+      const chats: Chat[] = await prisma
+        .user({ id })
+        .chats()
+        .$fragment(fragment);
+
+      return chats;
+    },
     myFollowers: async (_, __, { request }): Promise<User[]> => {
       isAuthenticated(request);
       const {

@@ -17,8 +17,6 @@ type SomeOne {
   height: Int!
   company: String!
   etc: String
-  photo: [SomeOnePhoto!]!
-  reply: [Reply!]!
 }
 
 type SomeOnePhoto {
@@ -48,9 +46,13 @@ type Message {
 }
 
 type Query {
+  SomeOneProfile: SomeOne!
+  SomeOnePhoto: [SomeOnePhoto!]!
+  SomeOneReply: [Reply!]!
   myProfile: User!
   myFollowing: [User!]!
   myFollowers: [User!]!
+  myChats: [Chat!]!
   invite(id: String!): Invitation!
 }
 

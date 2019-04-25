@@ -22,8 +22,8 @@ type SomeOne {
   height: Int!
   company: String!
   etc: String
-  photo: [SomeOnePhoto!]!
-  reply: [Reply!]!
+  # photo: [SomeOnePhoto!]!
+  # reply: [Reply!]!
 }
 
 type SomeOnePhoto {

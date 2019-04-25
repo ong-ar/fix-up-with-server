@@ -23,15 +23,15 @@ type SomeOne {
 
 type SomeOnePhoto {
   id: String!
-  SomeOne: SomeOne!
   photo: String!
 }
 
 type Reply {
   id: String!
-  someone: SomeOne!
   writer: User!
   content: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Chat {

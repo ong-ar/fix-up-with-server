@@ -1,5 +1,5 @@
 type Query {
-  SomeOneProfile: SomeOne!
-  SomeOnePhoto: [SomeOnePhoto!]!
-  SomeOneReply: [Reply!]!
+  SomeOneProfile(id: String!): SomeOne!
+  SomeOnePhoto(id: String!): [SomeOnePhoto!]!
+  SomeOneReply(id: String!): [Reply!]!
 }

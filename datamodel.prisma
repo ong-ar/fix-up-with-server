@@ -7,6 +7,7 @@ type User {
   invitation: [Invitation!]! @relation(name: "InvitatingRelation")
   reply: [Reply!]!
   chats: [Chat!]!
+  someones: [SomeOne!]! @relation(name: "SomeOneUserRelation")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -37,9 +38,22 @@ enum SomeOneCompany {
   FOREIGN
 }
 
+enum SomeOneStatus {
+  REQUEST
+  COMPLETE
+}
+
+enum SomeOneAccess {
+  ALL
+  FOLLOW
+  NOTHING
+}
+
 type SomeOne {
   id: ID! @id
-  matchMaker: User!
+  status: SomeOneStatus! @default(value: REQUEST)
+  access: SomeOneAccess! @default(value: ALL)
+  user: User! @relation(name: "SomeOneUserRelation")
   gender: SomeOneGender!
   age: Int!
   height: Int!

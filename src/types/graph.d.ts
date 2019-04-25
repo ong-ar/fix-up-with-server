@@ -1,4 +1,4 @@
-export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  matchMaker: User!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n}\n\ntype SomeOnePhoto {\n  id: String!\n  SomeOne: SomeOne!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  someone: SomeOne!\n  writer: User!\n  content: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\ntype Query {\n  SomeOneProfile: SomeOne!\n  SomeOnePhoto: [SomeOnePhoto!]!\n  SomeOneReply: [Reply!]!\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  myChats: [Chat!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n"];
+export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  user: User!\n  access: String!\n  status: String!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n}\n\ntype SomeOnePhoto {\n  id: String!\n  SomeOne: SomeOne!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  someone: SomeOne!\n  writer: User!\n  content: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\ntype Query {\n  SomeOneProfile(id: String!): SomeOne!\n  SomeOnePhoto(id: String!): [SomeOnePhoto!]!\n  SomeOneReply(id: String!): [Reply!]!\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  myChats: [Chat!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -12,13 +12,27 @@ export interface Query {
   invite: Invitation;
 }
 
+export interface SomeOneProfileQueryArgs {
+  id: string;
+}
+
+export interface SomeOnePhotoQueryArgs {
+  id: string;
+}
+
+export interface SomeOneReplyQueryArgs {
+  id: string;
+}
+
 export interface InviteQueryArgs {
   id: string;
 }
 
 export interface SomeOne {
   id: string;
-  matchMaker: User;
+  user: User;
+  access: string;
+  status: string;
   gender: string;
   age: number;
   height: number;

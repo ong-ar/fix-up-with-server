@@ -11,7 +11,9 @@ type Invitation {
 
 type SomeOne {
   id: String!
-  matchMaker: User!
+  user: User!
+  access: String!
+  status: String!
   gender: String!
   age: Int!
   height: Int!
@@ -46,9 +48,9 @@ type Message {
 }
 
 type Query {
-  SomeOneProfile: SomeOne!
-  SomeOnePhoto: [SomeOnePhoto!]!
-  SomeOneReply: [Reply!]!
+  SomeOneProfile(id: String!): SomeOne!
+  SomeOnePhoto(id: String!): [SomeOnePhoto!]!
+  SomeOneReply(id: String!): [Reply!]!
   myProfile: User!
   myFollowing: [User!]!
   myFollowers: [User!]!

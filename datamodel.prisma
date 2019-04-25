@@ -6,6 +6,7 @@ type User {
   followers: [User!]! @relation(name: "FollowRelation")
   invitation: [Invitation!]! @relation(name: "InvitatingRelation")
   reply: [Reply!]! @relation(name: "UserReplyRelation")
+  chats: [Chat!]!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -65,4 +66,17 @@ type Reply {
   content: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+
+type Chat {
+  id: ID! @unique
+  users: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: ID! @unique
+  text: String!
+  user: User!
+  chat: Chat!
 }

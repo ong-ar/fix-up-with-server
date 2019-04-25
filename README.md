@@ -22,8 +22,16 @@
 - [x] 주선자
 - [x] 초대
 - [x] 인재풀
-- [] 댓글
-- [] 채팅
+- [x] 댓글
+- [x] 채팅
 
 ## graphql resolver
 
+- [x] 회원 가입 (signup)
+- [x] 로그인 (signin)
+- [x] 회원 초대 (invite)
+- [ ] 인재풀 등록 (createSomeone)
+- [ ] 인재풀 수정 / 삭제 (updateSomeone)
+- [ ] 인재풀 리스트 (SomeoneList)
+- [ ] 인재풀 정보 (Someone)
+- [ ] 주산자 간 채팅 (chat)

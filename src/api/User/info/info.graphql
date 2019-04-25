@@ -1,0 +1,5 @@
+type Query {
+  myProfile: User!
+  myFollowing: [User!]!
+  myFollowers: [User!]!
+}

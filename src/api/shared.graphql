@@ -1,9 +1,53 @@
 type User {
   id: String!
   email: String!
+  password: String!
+  # following: [User!]!
+  # followers: [User!]!
+  # invitation: [Invitation!]!
+  # reply: [Reply!]!
+  # chats: [Chat!]!
 }
 
 type Invitation {
   id: String!
   invitedEmail: String!
+}
+
+type SomeOne {
+  id: String!
+  matchMaker: User!
+  gender: String!
+  age: Int!
+  height: Int!
+  company: String!
+  etc: String
+  photo: [SomeOnePhoto!]!
+  reply: [Reply!]!
+}
+
+type SomeOnePhoto {
+  id: String!
+  SomeOne: SomeOne!
+  photo: String!
+}
+
+type Reply {
+  id: String!
+  someone: SomeOne!
+  writer: User!
+  content: String!
+}
+
+type Chat {
+  id: String!
+  users: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: String!
+  text: String!
+  user: User!
+  chat: Chat!
 }

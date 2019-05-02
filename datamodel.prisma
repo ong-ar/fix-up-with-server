@@ -68,7 +68,10 @@ type SomeOne {
 type SomeOnePhoto {
   id: ID! @id
   SomeOne: SomeOne!
-  photo: String!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String! @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

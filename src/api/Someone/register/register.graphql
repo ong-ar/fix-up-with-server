@@ -1,0 +1,27 @@
+type Mutation {
+  register(
+    access: accessType!
+    gender: genderType!
+    age: Int!
+    height: Int!
+    company: companyType!
+    etc: String!
+  ): Boolean!
+}
+
+enum accessType {
+  ALL
+  FOLLOW
+  NOTHING
+}
+
+enum genderType {
+  MALE
+  FEMALE
+}
+
+enum companyType {
+  LARGE
+  MEDIUM
+  FOREIGN
+}

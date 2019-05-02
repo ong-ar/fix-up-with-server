@@ -100,9 +100,9 @@ const SomeOneFragment = `fragment SomeOneWithUser on SomeOne {
         status
         access
         user {
-            id
-            email
-            password
+          id
+          email
+          password
         }
         gender
         age

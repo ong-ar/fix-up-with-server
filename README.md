@@ -33,6 +33,6 @@
 - [x] 주선자 정보 (User/info)
 - [x] 인재풀 등록 (createSomeone)
 - [x] 인재풀 수정 / 삭제 (updateSomeone)
-- [ ] 인재풀 리스트 (SomeoneList)
+- [x] 인재풀 리스트 (SomeoneList)
 - [x] 인재풀 정보 (Someone/info)
 - [ ] 주산자 간 채팅 (chat)

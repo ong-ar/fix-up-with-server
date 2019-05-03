@@ -35,4 +35,6 @@
 - [x] 인재풀 수정 / 삭제 (updateSomeone)
 - [x] 인재풀 리스트 (SomeoneList)
 - [x] 인재풀 정보 (Someone/info)
+- [ ] 댓글 등록
+- [ ] 댓글 수정 / 삭제
 - [ ] 주산자 간 채팅 (chat)

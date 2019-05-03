@@ -1,12 +1,12 @@
 import { prisma } from "../../../../prisma/prisma-client";
-import { RegisterMutationArgs } from "../../../types/graph";
+import { SomeOneRegisterMutationArgs } from "../../../types/graph";
 import { isAuthenticated } from "../../../middlewares";
 
 export default {
   Mutation: {
-    register: async (
+    SomeOneRegister: async (
       _: any,
-      args: RegisterMutationArgs,
+      args: SomeOneRegisterMutationArgs,
       { request },
     ): Promise<boolean> => {
       isAuthenticated(request);

@@ -1,4 +1,4 @@
-export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  user: User!\n  access: String!\n  status: String!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n}\n\ntype SomeOnePhoto {\n  id: String!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  writer: User!\n  content: String!\n  createdAt: String!\n  updatedAt: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\ntype Query {\n  SomeOneProfile(id: String!): SomeOne!\n  SomeOnePhoto(id: String!): [SomeOnePhoto!]!\n  SomeOneReply(id: String!): [Reply!]!\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  myChats: [Chat!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  register(access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n\nenum accessType {\n  ALL\n  FOLLOW\n  NOTHING\n}\n\nenum genderType {\n  MALE\n  FEMALE\n}\n\nenum companyType {\n  LARGE\n  MEDIUM\n  FOREIGN\n}\n"];
+export const typeDefs = ["type User {\n  id: String!\n  email: String!\n  password: String!\n}\n\ntype Invitation {\n  id: String!\n  invitedEmail: String!\n}\n\ntype SomeOne {\n  id: String!\n  user: User!\n  access: String!\n  status: String!\n  gender: String!\n  age: Int!\n  height: Int!\n  company: String!\n  etc: String\n}\n\ntype SomeOnePhoto {\n  id: String!\n  photo: String!\n}\n\ntype Reply {\n  id: String!\n  writer: User!\n  content: String!\n  createdAt: String!\n  updatedAt: String!\n}\n\ntype Chat {\n  id: String!\n  users: [User!]!\n  messages: [Message!]!\n}\n\ntype Message {\n  id: String!\n  text: String!\n  user: User!\n  chat: Chat!\n}\n\nenum accessType {\n  ALL\n  FOLLOW\n  NOTHING\n}\n\nenum genderType {\n  MALE\n  FEMALE\n}\n\nenum companyType {\n  LARGE\n  MEDIUM\n  FOREIGN\n}\n\nenum statusType {\n  REQUEST\n  COMPLETE\n}\n\ntype Query {\n  SomeOneProfile(id: String!): SomeOne!\n  SomeOnePhoto(id: String!): [SomeOnePhoto!]!\n  SomeOneReply(id: String!): [Reply!]!\n  myProfile: User!\n  myFollowing: [User!]!\n  myFollowers: [User!]!\n  myChats: [Chat!]!\n  invite(id: String!): Invitation!\n}\n\ntype Mutation {\n  SomeOneRegister(access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!\n  SomeOneUpdate(someone_id: String!, access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!\n  SomeOneUpdateStatus(someone_id: String!, status: statusType!): Boolean!\n  invite(email: String!): Boolean!\n  signIn(email: String!, password: String!): String!\n  signUp(id: String!, password: String!): Boolean!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -78,19 +78,36 @@ export interface Invitation {
 }
 
 export interface Mutation {
-  register: boolean;
+  SomeOneRegister: boolean;
+  SomeOneUpdate: boolean;
+  SomeOneUpdateStatus: boolean;
   invite: boolean;
   signIn: string;
   signUp: boolean;
 }
 
-export interface RegisterMutationArgs {
+export interface SomeOneRegisterMutationArgs {
   access: accessType;
   gender: genderType;
   age: number;
   height: number;
   company: companyType;
   etc: string;
+}
+
+export interface SomeOneUpdateMutationArgs {
+  someone_id: string;
+  access: accessType;
+  gender: genderType;
+  age: number;
+  height: number;
+  company: companyType;
+  etc: string;
+}
+
+export interface SomeOneUpdateStatusMutationArgs {
+  someone_id: string;
+  status: statusType;
 }
 
 export interface InviteMutationArgs {
@@ -112,3 +129,5 @@ export type accessType = "ALL" | "FOLLOW" | "NOTHING";
 export type genderType = "MALE" | "FEMALE";
 
 export type companyType = "LARGE" | "MEDIUM" | "FOREIGN";
+
+export type statusType = "REQUEST" | "COMPLETE";

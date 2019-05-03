@@ -47,24 +47,6 @@ type Message {
   chat: Chat!
 }
 
-type Query {
-  SomeOneProfile(id: String!): SomeOne!
-  SomeOnePhoto(id: String!): [SomeOnePhoto!]!
-  SomeOneReply(id: String!): [Reply!]!
-  myProfile: User!
-  myFollowing: [User!]!
-  myFollowers: [User!]!
-  myChats: [Chat!]!
-  invite(id: String!): Invitation!
-}
-
-type Mutation {
-  register(access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
-  invite(email: String!): Boolean!
-  signIn(email: String!, password: String!): String!
-  signUp(id: String!, password: String!): Boolean!
-}
-
 enum accessType {
   ALL
   FOLLOW
@@ -80,4 +62,29 @@ enum companyType {
   LARGE
   MEDIUM
   FOREIGN
+}
+
+enum statusType {
+  REQUEST
+  COMPLETE
+}
+
+type Query {
+  SomeOneProfile(id: String!): SomeOne!
+  SomeOnePhoto(id: String!): [SomeOnePhoto!]!
+  SomeOneReply(id: String!): [Reply!]!
+  myProfile: User!
+  myFollowing: [User!]!
+  myFollowers: [User!]!
+  myChats: [Chat!]!
+  invite(id: String!): Invitation!
+}
+
+type Mutation {
+  SomeOneRegister(access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
+  SomeOneUpdate(someone_id: String!, access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
+  SomeOneUpdateStatus(someone_id: String!, status: statusType!): Boolean!
+  invite(email: String!): Boolean!
+  signIn(email: String!, password: String!): String!
+  signUp(id: String!, password: String!): Boolean!
 }

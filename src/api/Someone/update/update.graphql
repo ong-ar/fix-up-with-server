@@ -1,5 +1,6 @@
 type Mutation {
-  SomeOneRegister(
+  SomeOneUpdate(
+    someone_id: String!
     access: accessType!
     gender: genderType!
     age: Int!
@@ -7,4 +8,6 @@ type Mutation {
     company: companyType!
     etc: String!
   ): Boolean!
+
+  SomeOneUpdateStatus(someone_id: String!, status: statusType!): Boolean!
 }

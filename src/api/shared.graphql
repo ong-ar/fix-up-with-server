@@ -53,3 +53,25 @@ type Message {
   user: User!
   chat: Chat!
 }
+
+enum accessType {
+  ALL
+  FOLLOW
+  NOTHING
+}
+
+enum genderType {
+  MALE
+  FEMALE
+}
+
+enum companyType {
+  LARGE
+  MEDIUM
+  FOREIGN
+}
+
+enum statusType {
+  REQUEST
+  COMPLETE
+}

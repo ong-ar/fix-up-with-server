@@ -1,0 +1,3 @@
+type Query {
+  SomeOneList(page_size: Int!, page: Int!, order: String!): [SomeOne!]!
+}

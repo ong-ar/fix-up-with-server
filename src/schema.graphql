@@ -19,6 +19,7 @@ type SomeOne {
   height: Int!
   company: String!
   etc: String
+  photo: [SomeOnePhoto!]!
 }
 
 type SomeOnePhoto {
@@ -73,6 +74,7 @@ type Query {
   SomeOneProfile(id: String!): SomeOne!
   SomeOnePhoto(id: String!): [SomeOnePhoto!]!
   SomeOneReply(id: String!): [Reply!]!
+  SomeOneList(page_size: Int!, page: Int!, order: String!): [SomeOne!]!
   myProfile: User!
   myFollowing: [User!]!
   myFollowers: [User!]!
@@ -82,8 +84,8 @@ type Query {
 
 type Mutation {
   SomeOneRegister(access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
-  SomeOneUpdate(someone_id: String!, access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
-  SomeOneUpdateStatus(someone_id: String!, status: statusType!): Boolean!
+  SomeOneUpdate(id: String!, access: accessType!, gender: genderType!, age: Int!, height: Int!, company: companyType!, etc: String!): Boolean!
+  SomeOneUpdateStatus(id: String!, status: statusType!): Boolean!
   invite(email: String!): Boolean!
   signIn(email: String!, password: String!): String!
   signUp(id: String!, password: String!): Boolean!

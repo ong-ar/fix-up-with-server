@@ -1,6 +1,6 @@
 type Mutation {
   SomeOneUpdate(
-    someone_id: String!
+    id: String!
     access: accessType!
     gender: genderType!
     age: Int!
@@ -9,5 +9,5 @@ type Mutation {
     etc: String!
   ): Boolean!
 
-  SomeOneUpdateStatus(someone_id: String!, status: statusType!): Boolean!
+  SomeOneUpdateStatus(id: String!, status: statusType!): Boolean!
 }

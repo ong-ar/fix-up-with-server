@@ -14,9 +14,9 @@ export default {
     ): Promise<boolean> => {
       isAuthenticated(request);
       try {
-        const { someone_id, access, gender, age, height, company, etc } = args;
+        const { id, access, gender, age, height, company, etc } = args;
         const {
-          user: { id },
+          user: { id: user },
         } = request;
 
         await prisma.updateManySomeOnes({
@@ -28,7 +28,7 @@ export default {
             gender,
             height,
           },
-          where: { id: someone_id, user: id },
+          where: { id, user },
         });
         return true;
       } catch {
@@ -42,16 +42,16 @@ export default {
     ): Promise<boolean> => {
       isAuthenticated(request);
       try {
-        const { someone_id, status } = args;
+        const { id, status } = args;
         const {
-          user: { id },
+          user: { id: user },
         } = request;
 
         await prisma.updateManySomeOnes({
           data: {
             status,
           },
-          where: { id: someone_id, user: id },
+          where: { id, user },
         });
         return true;
       } catch {
